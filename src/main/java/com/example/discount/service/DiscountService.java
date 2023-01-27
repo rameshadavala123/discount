@@ -63,7 +63,10 @@ public class DiscountService {
 			
 		} else {
 			discount = abcTotal * 0.1;
-			return "The discount ABC and a total cost of $" + (abcTotal - discount);
+			if(discount != 0.0) {
+				return "The discount ABC and a total cost of $" + (abcTotal - discount);
+			}
+			return "No discount  applied for this order" + (abcTotal - discount);
 		}
 		
 	}
@@ -102,8 +105,10 @@ public Discount createDiscount(List<Product> products) {
 			
 		} else {
 			discount = abcTotal * 0.1;
-			discountObj.setDicountAmount(discount);
-			discountObj.setDiscountType("ABC");
+			if (discount != 0.0) {
+				discountObj.setDicountAmount(discount);
+				discountObj.setDiscountType("ABC");
+			}
 			return discountObj;
 			
 		}
